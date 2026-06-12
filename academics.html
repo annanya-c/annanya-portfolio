@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>academics — annanya.world</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.acad-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem}
+.acad-card{background:var(--bg2);border:4px solid var(--sky);padding:1.5rem;position:relative;transition:transform 0.1s,box-shadow 0.1s}
+.acad-card:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--sky2)}
+.acad-card::after{content:'';position:absolute;bottom:0;right:0;width:12px;height:12px;background:var(--sky);clip-path:polygon(100% 0,100% 100%,0 100%)}
+.acad-icon{font-size:2rem;display:block;margin-bottom:0.8rem}
+.acad-title{font-family:var(--font-pixel);font-size:0.52rem;color:var(--sky);margin-bottom:0.4rem;line-height:1.6}
+.acad-place{font-family:var(--font-vt);font-size:1.25rem;color:var(--lilac3);margin-bottom:0.2rem}
+.acad-date{font-family:var(--font-silk);font-size:0.45rem;color:var(--mint);letter-spacing:0.1em;margin-bottom:0.8rem}
+.acad-desc{font-family:var(--font-vt);font-size:1.08rem;color:var(--tsoft);line-height:1.6}
+.cpill{font-family:var(--font-silk);font-size:0.38rem;padding:3px 8px;background:var(--bg3);border:2px solid var(--sky2);color:var(--sky);display:inline-block}
+
+.mentor-card{background:var(--bg2);border:4px solid var(--lilac2);padding:1.5rem;margin-top:1.2rem;display:flex;gap:1.2rem;align-items:flex-start}
+.mentor-card:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--lilac)}
+.mc-icon{font-size:2.5rem;flex-shrink:0}
+.mc-body .acad-title{color:var(--lilac)}
+.mc-body .acad-date{color:var(--lilac3)}
+
+.breadcrumb{font-family:var(--font-silk);font-size:0.5rem;color:var(--tsoft);margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:var(--pink);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{color:var(--tdim)}
+</style>
+</head>
+<body>
+<div id="px-cursor"><div class="px-cur-inner"></div></div>
+<div id="starfield"></div>
+<div id="scanlines"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">✦ annanya.world</a>
+  <div class="nav-links">
+    <a href="academics.html">academics</a>
+    <a href="projects.html">projects</a>
+    <a href="skills.html">skills</a>
+    <a href="music.html">music</a>
+    <a href="blog.html">blog</a>
+    <a href="shelf.html">shelf</a>
+    <a href="gallery.html">gallery</a>
+  </div>
+  <div class="nav-status">online</div>
+</nav>
+
+<div class="page">
+  <div class="breadcrumb reveal">
+    <a href="index.html">home</a>
+    <span>/</span>
+    <span style="color:var(--sky)">academics</span>
+  </div>
+
+  <div class="px-divider"></div>
+
+  <div class="sec-header reveal">
+    <span class="sec-label">[ loading credentials... ]</span>
+    <div class="sec-title">ACADEMICS</div>
+  </div>
+
+  <div class="acad-grid">
+    <div class="acad-card reveal">
+      <span class="acad-icon">🏛️</span>
+      <div class="acad-title">M.S. Computer Science</div>
+      <div class="acad-place">Stevens Institute of Technology</div>
+      <div class="acad-date">2023 — 2025 · Hoboken, NJ</div>
+      <div class="acad-desc">Specialization in AI &amp; Machine Learning. Built systems at the edge of human emotion and machine intelligence. Peer mentor for incoming graduate students.</div>
+      <div class="tag-row">
+        <span class="cpill">Machine Learning</span>
+        <span class="cpill">NLP</span>
+        <span class="cpill">Deep Learning</span>
+        <span class="cpill">Generative AI</span>
+        <span class="cpill">Web Mining</span>
+        <span class="cpill">Algorithms</span>
+      </div>
+    </div>
+
+    <div class="acad-card reveal">
+      <span class="acad-icon">💼</span>
+      <div class="acad-title">Software Engineering Intern</div>
+      <div class="acad-place">Godrej Agrovet</div>
+      <div class="acad-date">Internship · Mumbai, India</div>
+      <div class="acad-desc">ETL pipeline design, SQL Server optimization, Flask API deployment in production. First real taste of enterprise-scale data engineering.</div>
+      <div class="tag-row">
+        <span class="cpill">SQL Server</span>
+        <span class="cpill">ETL</span>
+        <span class="cpill">Flask</span>
+        <span class="cpill">Azure</span>
+        <span class="cpill">Python</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mentor-card reveal" style="transition:transform 0.1s,box-shadow 0.1s">
+    <div class="mc-icon">🌱</div>
+    <div class="mc-body">
+      <div class="acad-title mc-body" style="font-family:var(--font-pixel);font-size:0.52rem;color:var(--lilac);margin-bottom:0.4rem;line-height:1.6">Peer Mentor</div>
+      <div class="acad-place">Stevens Institute of Technology — Dept. of Computer Science</div>
+      <div class="acad-date">During M.S. Program</div>
+      <div class="acad-desc">Guided incoming graduate students through the program, coursework, and adjusting to a new city. Knowing the way is only useful if you help others find it too.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">✦ annanya.world / academics</div>
+  <div class="footer-links">
+    <a href="index.html">← home</a>
+    <a href="projects.html">projects →</a>
+  </div>
+  <div class="footer-copy">made with ♥ · 2025</div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>projects — annanya.world</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.2rem}
+.proj-card{background:var(--bg2);border:4px solid var(--pink);padding:1.6rem;position:relative;cursor:pointer;transition:transform 0.1s,box-shadow 0.1s;overflow:hidden;display:flex;flex-direction:column;gap:0.6rem}
+.proj-card:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--lilac2)}
+.proj-card::after{content:'';position:absolute;bottom:0;right:0;width:12px;height:12px;background:var(--pink);clip-path:polygon(100% 0,100% 100%,0 100%)}
+.proj-status{font-family:var(--font-silk);font-size:0.4rem;padding:3px 8px;border:2px solid var(--mint2);color:var(--mint);background:var(--bg3);position:absolute;top:1rem;right:1.2rem}
+.proj-status.wip{border-color:var(--yellow);color:var(--yellow)}
+.proj-emoji{font-size:2.2rem}
+.proj-title{font-family:var(--font-pixel);font-size:0.52rem;color:var(--pink);line-height:1.6}
+.proj-desc{font-family:var(--font-vt);font-size:1.1rem;color:var(--tsoft);line-height:1.6;flex:1}
+.proj-links{display:flex;gap:8px;margin-top:0.4rem}
+.proj-link{font-family:var(--font-silk);font-size:0.42rem;color:var(--lilac3);text-decoration:none;padding:4px 10px;border:2px solid var(--lilac2);transition:all 0.1s}
+.proj-link:hover{background:var(--lilac2);color:var(--bg)}
+
+.breadcrumb{font-family:var(--font-silk);font-size:0.5rem;color:var(--tsoft);margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:var(--pink);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{color:var(--tdim)}
+</style>
+</head>
+<body>
+<div id="px-cursor"><div class="px-cur-inner"></div></div>
+<div id="starfield"></div>
+<div id="scanlines"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">✦ annanya.world</a>
+  <div class="nav-links">
+    <a href="academics.html">academics</a>
+    <a href="projects.html">projects</a>
+    <a href="skills.html">skills</a>
+    <a href="music.html">music</a>
+    <a href="blog.html">blog</a>
+    <a href="shelf.html">shelf</a>
+    <a href="gallery.html">gallery</a>
+  </div>
+  <div class="nav-status">online</div>
+</nav>
+
+<div class="page">
+  <div class="breadcrumb reveal">
+    <a href="index.html">home</a>
+    <span>/</span>
+    <span style="color:var(--pink)">projects</span>
+  </div>
+
+  <div class="px-divider"></div>
+
+  <div class="sec-header reveal">
+    <span class="sec-label">[ select project to run ]</span>
+    <div class="sec-title">PROJECTS</div>
+  </div>
+
+  <div class="proj-grid">
+
+    <div class="proj-card reveal">
+      <span class="proj-status wip">IN PROGRESS</span>
+      <span class="proj-emoji">🎵</span>
+      <div class="proj-title">Emotionally Intelligent Music Recommender</div>
+      <div class="proj-desc">Because Spotify thinks happiness is one-dimensional. Building a system that understands the emotional grey areas — the songs you play at 2am when you're not sad but not fine either.</div>
+      <div class="tag-row">
+        <span class="ctag">Python</span><span class="ctag">NLP</span><span class="ctag">ML</span><span class="ctag">Collaborative Filtering</span>
+      </div>
+      <div class="proj-links">
+        <a class="proj-link" href="#">GitHub</a>
+        <a class="proj-link" href="#">Blog Post</a>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <span class="proj-status">COMPLETE</span>
+      <span class="proj-emoji">🕵️</span>
+      <div class="proj-title">Deepfake Detection System</div>
+      <div class="proj-desc">End-to-end pipeline for real-time media verification. Flask REST API deployed with front-end interface. Optimized for production-level inference with high accuracy on unseen data.</div>
+      <div class="tag-row">
+        <span class="ctag">Flask</span><span class="ctag">Computer Vision</span><span class="ctag">REST API</span><span class="ctag">PyTorch</span>
+      </div>
+      <div class="proj-links">
+        <a class="proj-link" href="#">GitHub</a>
+        <a class="proj-link" href="#">Demo</a>
+      </div>
+    </div>
+
+    <div class="proj-card reveal">
+      <span class="proj-status">COMPLETE</span>
+      <span class="proj-emoji">🔄</span>
+      <div class="proj-title">ETL Pipeline Engineering</div>
+      <div class="proj-desc">High-volume data workflows built with SQL Server at Godrej Agrovet. Reduced pipeline latency through aggressive query tuning, index redesign, and schema normalization.</div>
+      <div class="tag-row">
+        <span class="ctag">SQL Server</span><span class="ctag">ETL</span><span class="ctag">Azure</span><span class="ctag">Python</span>
+      </div>
+      <div class="proj-links">
+        <a class="proj-link" href="#">Details</a>
+      </div>
+    </div>
+
+    <!-- placeholder tile -->
+    <div class="proj-card reveal" style="border-style:dashed;opacity:0.45;cursor:default">
+      <span class="proj-emoji">⚡</span>
+      <div class="proj-title">Next project loading...</div>
+      <div class="proj-desc">Something is always cooking. Check back soon.</div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">✦ annanya.world / projects</div>
+  <div class="footer-links">
+    <a href="academics.html">← academics</a>
+    <a href="skills.html">skills →</a>
+  </div>
+  <div class="footer-copy">made with ♥ · 2025</div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

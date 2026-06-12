@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>gallery — annanya.world</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.gallery-intro{font-family:var(--font-vt);font-size:1.2rem;color:var(--tsoft);line-height:1.75;background:var(--bg2);border:4px solid var(--sky);padding:1.3rem 1.5rem;margin-bottom:2rem;box-shadow:4px 4px 0 var(--sky2)}
+.gallery-intro strong{color:var(--sky)}
+
+.gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.g-frame{background:var(--bg2);border:4px solid var(--sky);overflow:hidden;cursor:pointer;transition:all 0.1s;position:relative}
+.g-frame:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--sky2);border-color:var(--sky2)}
+.g-frame:nth-child(3n){border-color:var(--pink)}
+.g-frame:nth-child(3n):hover{box-shadow:5px 5px 0 var(--pink3)}
+.g-frame:nth-child(3n+2){border-color:var(--lilac2)}
+.g-frame:nth-child(3n+2):hover{box-shadow:5px 5px 0 var(--lilac)}
+.g-img{width:100%;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;font-size:3.5rem;background:var(--bg3);border-bottom:3px solid inherit}
+.g-caption{font-family:var(--font-silk);font-size:0.4rem;color:var(--sky);padding:7px 10px;letter-spacing:0.06em;background:var(--bg3)}
+.g-frame:nth-child(3n) .g-caption{color:var(--pink)}
+.g-frame:nth-child(3n+2) .g-caption{color:var(--lilac3)}
+
+.g-frame.placeholder{border-style:dashed;opacity:0.45;cursor:default}
+.g-frame.placeholder:hover{transform:none;box-shadow:none}
+
+/* upload cta */
+.upload-cta{background:var(--bg2);border:4px solid var(--mint2);padding:1.4rem 1.6rem;margin-top:1.5rem;display:flex;align-items:center;gap:1rem;box-shadow:4px 4px 0 var(--mint)}
+.uc-icon{font-size:2.5rem;flex-shrink:0}
+.uc-text .uc-title{font-family:var(--font-pixel);font-size:0.48rem;color:var(--mint);margin-bottom:0.4rem;line-height:1.6}
+.uc-text .uc-sub{font-family:var(--font-vt);font-size:1.1rem;color:var(--tsoft);line-height:1.5}
+
+.breadcrumb{font-family:var(--font-silk);font-size:0.5rem;color:var(--tsoft);margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:var(--pink);text-decoration:none}
+.breadcrumb span{color:var(--tdim)}
+</style>
+</head>
+<body>
+<div id="px-cursor"><div class="px-cur-inner"></div></div>
+<div id="starfield"></div>
+<div id="scanlines"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">✦ annanya.world</a>
+  <div class="nav-links">
+    <a href="academics.html">academics</a>
+    <a href="projects.html">projects</a>
+    <a href="skills.html">skills</a>
+    <a href="music.html">music</a>
+    <a href="blog.html">blog</a>
+    <a href="shelf.html">shelf</a>
+    <a href="gallery.html">gallery</a>
+  </div>
+  <div class="nav-status">online</div>
+</nav>
+
+<div class="page">
+  <div class="breadcrumb reveal">
+    <a href="index.html">home</a>
+    <span>/</span>
+    <span style="color:var(--sky)">gallery</span>
+  </div>
+
+  <div class="px-divider"></div>
+
+  <div class="sec-header reveal">
+    <span class="sec-label">[ polaroids from my world ]</span>
+    <div class="sec-title">GALLERY</div>
+  </div>
+
+  <div class="gallery-intro reveal">
+    <strong>the city, the sky, the moments in between.</strong> these are the things i want to remember — not just what i built, but where i was when i was building myself.
+  </div>
+
+  <div class="gallery-grid">
+    <div class="g-frame reveal"><div class="g-img">🗽</div><div class="g-caption">nyc skyline ✦</div></div>
+    <div class="g-frame reveal"><div class="g-img">🌉</div><div class="g-caption">hudson river dusk</div></div>
+    <div class="g-frame reveal"><div class="g-img">🌆</div><div class="g-caption">manhattan golden hour</div></div>
+    <div class="g-frame reveal"><div class="g-img">🌸</div><div class="g-caption">central park spring</div></div>
+    <div class="g-frame reveal"><div class="g-img">☕</div><div class="g-caption">brooklyn coffee run</div></div>
+    <div class="g-frame reveal"><div class="g-img">🌃</div><div class="g-caption">late night walks</div></div>
+    <div class="g-frame reveal"><div class="g-img">🎡</div><div class="g-caption">coney island</div></div>
+    <div class="g-frame reveal"><div class="g-img">🌄</div><div class="g-caption">sunrise from hoboken</div></div>
+    <div class="g-frame placeholder reveal"><div class="g-img">📷</div><div class="g-caption">your photo here →</div></div>
+    <div class="g-frame placeholder reveal"><div class="g-img">📷</div><div class="g-caption">your photo here →</div></div>
+    <div class="g-frame placeholder reveal"><div class="g-img">📷</div><div class="g-caption">your photo here →</div></div>
+    <div class="g-frame placeholder reveal"><div class="g-img">📷</div><div class="g-caption">your photo here →</div></div>
+  </div>
+
+  <div class="upload-cta reveal">
+    <div class="uc-icon">📸</div>
+    <div class="uc-text">
+      <div class="uc-title">add your own photos</div>
+      <div class="uc-sub">replace the placeholder tiles with real &lt;img&gt; tags pointing to your photos. the grid handles the rest.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">✦ annanya.world / gallery</div>
+  <div class="footer-links">
+    <a href="shelf.html">← shelf</a>
+    <a href="index.html">home ✦</a>
+  </div>
+  <div class="footer-copy">made with ♥ · 2025</div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

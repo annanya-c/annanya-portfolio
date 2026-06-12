@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>blog — annanya.world</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.blog-list{display:flex;flex-direction:column;gap:1.2rem}
+.blog-post{background:var(--bg2);border:4px solid var(--yellow);padding:1.5rem 1.7rem;cursor:pointer;transition:all 0.1s;position:relative;text-decoration:none;display:block}
+.blog-post:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--yellow2);border-color:var(--yellow2)}
+.blog-post::after{content:'';position:absolute;bottom:0;right:0;width:12px;height:12px;background:var(--yellow);clip-path:polygon(100% 0,100% 100%,0 100%)}
+.bp-meta{display:flex;align-items:center;gap:10px;margin-bottom:0.6rem}
+.bp-date{font-family:var(--font-silk);font-size:0.45rem;color:var(--mint);letter-spacing:0.15em}
+.bp-tag{font-family:var(--font-silk);font-size:0.4rem;padding:3px 8px;background:var(--bg3);border:2px solid var(--yellow2);color:var(--yellow)}
+.bp-title{font-family:var(--font-pixel);font-size:0.58rem;color:var(--yellow);margin-bottom:0.6rem;line-height:1.6}
+.bp-preview{font-family:var(--font-vt);font-size:1.1rem;color:var(--tsoft);line-height:1.6}
+.bp-arrow{font-family:var(--font-pixel);font-size:0.42rem;color:var(--yellow);margin-top:0.8rem;display:block;transition:letter-spacing 0.2s}
+.blog-post:hover .bp-arrow{letter-spacing:0.12em}
+
+.blog-post.draft{border-style:dashed;opacity:0.5;cursor:default}
+.blog-post.draft:hover{transform:none;box-shadow:none}
+
+.blog-intro{background:var(--bg2);border:4px solid var(--lilac2);padding:1.4rem 1.6rem;margin-bottom:2rem;font-family:var(--font-vt);font-size:1.15rem;color:var(--tsoft);line-height:1.7}
+.blog-intro strong{color:var(--yellow)}
+
+.breadcrumb{font-family:var(--font-silk);font-size:0.5rem;color:var(--tsoft);margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:var(--pink);text-decoration:none}
+.breadcrumb span{color:var(--tdim)}
+</style>
+</head>
+<body>
+<div id="px-cursor"><div class="px-cur-inner"></div></div>
+<div id="starfield"></div>
+<div id="scanlines"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">✦ annanya.world</a>
+  <div class="nav-links">
+    <a href="academics.html">academics</a>
+    <a href="projects.html">projects</a>
+    <a href="skills.html">skills</a>
+    <a href="music.html">music</a>
+    <a href="blog.html">blog</a>
+    <a href="shelf.html">shelf</a>
+    <a href="gallery.html">gallery</a>
+  </div>
+  <div class="nav-status">online</div>
+</nav>
+
+<div class="page">
+  <div class="breadcrumb reveal">
+    <a href="index.html">home</a>
+    <span>/</span>
+    <span style="color:var(--yellow)">blog</span>
+  </div>
+
+  <div class="px-divider"></div>
+
+  <div class="sec-header reveal">
+    <span class="sec-label">[ thoughts.log — unfiltered ]</span>
+    <div class="sec-title">BLOG</div>
+  </div>
+
+  <div class="blog-intro reveal">
+    this is where i put the things that live in my head. sometimes it's <strong>AI and music theory</strong>. sometimes it's <strong>what the Hudson River looks like at 11pm</strong>. mostly it's both at once.
+  </div>
+
+  <div class="blog-list">
+
+    <a href="#" class="blog-post reveal">
+      <div class="bp-meta">
+        <span class="bp-date">2025 · 04 · 12</span>
+        <span class="bp-tag">AI / ML</span>
+      </div>
+      <div class="bp-title">Why Spotify Doesn't Actually Understand Your Emotions</div>
+      <div class="bp-preview">Valence and energy are not feelings. After deep-diving into Spotify's BaRT model and all 12 audio parameters, I found the gap that's been bothering me for years. Your 2am playlist isn't sad. It isn't happy. Spotify has no word for what it is.</div>
+      <span class="bp-arrow">&gt; read more_</span>
+    </a>
+
+    <a href="#" class="blog-post reveal">
+      <div class="bp-meta">
+        <span class="bp-date">2025 · 03 · 28</span>
+        <span class="bp-tag">thoughts</span>
+      </div>
+      <div class="bp-title">On Building Things That Feel</div>
+      <div class="bp-preview">The most interesting engineering happens at edges. Where data meets emotion. Where a model meets meaning. Here's what I've been thinking about lately — and why I think the future of AI is emotional, not just intelligent.</div>
+      <span class="bp-arrow">&gt; read more_</span>
+    </a>
+
+    <a href="#" class="blog-post reveal">
+      <div class="bp-meta">
+        <span class="bp-date">2025 · 03 · 02</span>
+        <span class="bp-tag">life</span>
+      </div>
+      <div class="bp-title">What the NYC Skyline Taught Me About Ambition</div>
+      <div class="bp-preview">I've been staring at this skyline from across the Hudson for two years now. Some nights it feels like a promise. Some nights it feels like a dare. A few thoughts on being in-between — between countries, between versions of yourself.</div>
+      <span class="bp-arrow">&gt; read more_</span>
+    </a>
+
+    <a href="#" class="blog-post reveal">
+      <div class="bp-meta">
+        <span class="bp-date">2025 · 02 · 14</span>
+        <span class="bp-tag">music</span>
+      </div>
+      <div class="bp-title">Songs That Don't Have a Genre: A Listening Diary</div>
+      <div class="bp-preview">Some music refuses to be categorized. It sits in the overlap between something you'd play at a funeral and something you'd play at sunrise. This is a log of those songs, and why they matter.</div>
+      <span class="bp-arrow">&gt; read more_</span>
+    </a>
+
+    <div class="blog-post draft reveal">
+      <div class="bp-meta">
+        <span class="bp-date">coming soon_</span>
+        <span class="bp-tag">???</span>
+      </div>
+      <div class="bp-title">Your next post goes here ✦</div>
+      <div class="bp-preview">This is your space. Fill it with whatever's living in your head rent-free right now.</div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">✦ annanya.world / blog</div>
+  <div class="footer-links">
+    <a href="music.html">← music</a>
+    <a href="shelf.html">shelf →</a>
+  </div>
+  <div class="footer-copy">made with ♥ · 2025</div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>annanya.world</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+/* HERO WINDOW */
+.hero{min-height:calc(100vh - 48px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:3rem 2rem;position:relative;z-index:2}
+.hero-sprites{position:absolute;inset:0;pointer-events:none}
+.sprite{position:absolute;font-size:1.8rem;animation:spriteFloat ease-in-out infinite;filter:drop-shadow(0 0 6px rgba(255,158,196,0.5))}
+@keyframes spriteFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+
+.hero-win{max-width:600px;width:100%}
+.win-inner{padding:2rem 2.5rem 2.5rem}
+.hero-greeting{font-family:var(--font-pixel);font-size:0.48rem;color:var(--mint);letter-spacing:0.15em;display:block;margin-bottom:0.9rem}
+.hero-name{font-family:var(--font-pixel);font-size:clamp(1rem,3vw,1.6rem);color:var(--pink);line-height:1.4;text-shadow:3px 3px 0 var(--lilac2),6px 6px 0 rgba(200,100,160,0.25);margin-bottom:0.6rem}
+.hero-tagline{font-family:var(--font-vt);font-size:1.4rem;color:var(--lilac3);margin-bottom:1rem;line-height:1.5}
+.hero-cursor{display:inline-block;width:10px;height:2px;background:var(--pink);margin-left:2px;animation:blink 0.8s step-end infinite;vertical-align:middle}
+.hero-bio{font-family:var(--font-vt);font-size:1.15rem;color:var(--tsoft);line-height:1.75;margin-bottom:1.4rem}
+.meta-row{display:flex;gap:8px;flex-wrap:wrap}
+.meta-chip{font-family:var(--font-silk);font-size:0.48rem;padding:5px 11px;background:var(--bg3);border:2px solid var(--lilac2);color:var(--lilac3);letter-spacing:0.05em}
+
+/* SECTION GRID — the hub */
+.hub{position:relative;z-index:2;max-width:900px;margin:0 auto;padding:0 2rem 3rem}
+.hub-label{font-family:var(--font-pixel);font-size:0.52rem;color:var(--tsoft);letter-spacing:0.15em;text-align:center;margin-bottom:1.5rem}
+.hub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+
+.hub-tile{background:var(--bg2);border:4px solid var(--pink);padding:1.6rem 1.2rem;text-align:center;cursor:pointer;text-decoration:none;display:flex;flex-direction:column;align-items:center;gap:0.8rem;transition:transform 0.1s,box-shadow 0.1s,border-color 0.1s;position:relative;overflow:hidden}
+.hub-tile:hover{transform:translate(-4px,-4px);box-shadow:6px 6px 0 var(--lilac2)}
+.hub-tile::after{content:'';position:absolute;bottom:0;right:0;width:14px;height:14px;background:var(--pink);clip-path:polygon(100% 0,100% 100%,0 100%)}
+
+.hub-tile.mint{border-color:var(--mint2)}.hub-tile.mint:hover{box-shadow:6px 6px 0 var(--mint)}.hub-tile.mint::after{background:var(--mint2)}
+.hub-tile.sky{border-color:var(--sky)}.hub-tile.sky:hover{box-shadow:6px 6px 0 var(--sky2)}.hub-tile.sky::after{background:var(--sky)}
+.hub-tile.yellow{border-color:var(--yellow)}.hub-tile.yellow:hover{box-shadow:6px 6px 0 var(--yellow2)}.hub-tile.yellow::after{background:var(--yellow)}
+.hub-tile.lilac{border-color:var(--lilac2)}.hub-tile.lilac:hover{box-shadow:6px 6px 0 var(--lilac)}.hub-tile.lilac::after{background:var(--lilac2)}
+
+.tile-emoji{font-size:2.4rem;display:block}
+.tile-name{font-family:var(--font-pixel);font-size:0.5rem;color:var(--text);line-height:1.6;letter-spacing:0.05em}
+.tile-sub{font-family:var(--font-vt);font-size:1rem;color:var(--tsoft)}
+.tile-arrow{font-family:var(--font-pixel);font-size:0.42rem;color:var(--pink);transition:letter-spacing 0.2s}
+.hub-tile:hover .tile-arrow{letter-spacing:0.1em}
+.hub-tile.mint .tile-arrow{color:var(--mint)}
+.hub-tile.sky .tile-arrow{color:var(--sky)}
+.hub-tile.yellow .tile-arrow{color:var(--yellow)}
+.hub-tile.lilac .tile-arrow{color:var(--lilac)}
+
+/* quote band */
+.quote-band{position:relative;z-index:2;background:var(--bg2);border-top:4px solid var(--lilac2);border-bottom:4px solid var(--lilac2);padding:1.5rem 2rem;text-align:center;margin-bottom:2rem}
+.qb-text{font-family:var(--font-vt);font-size:1.5rem;color:var(--yellow);font-style:italic;line-height:1.6}
+.qb-text::before{content:'" '}
+.qb-text::after{content:' "'}
+.qb-author{font-family:var(--font-silk);font-size:0.48rem;color:var(--tsoft);margin-top:0.5rem;letter-spacing:0.1em}
+.qb-author::before{content:'— '}
+
+/* ground */
+.ground{height:24px;background:repeating-linear-gradient(90deg,var(--mint2) 0 16px,var(--mint) 16px 32px);border-top:4px solid var(--mint2);position:relative;z-index:2}
+</style>
+</head>
+<body>
+<div id="px-cursor"><div class="px-cur-inner"></div></div>
+<div id="starfield"></div>
+<div id="scanlines"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">✦ annanya.world</a>
+  <div class="nav-links">
+    <a href="academics.html">academics</a>
+    <a href="projects.html">projects</a>
+    <a href="skills.html">skills</a>
+    <a href="music.html">music</a>
+    <a href="blog.html">blog</a>
+    <a href="shelf.html">shelf</a>
+    <a href="gallery.html">gallery</a>
+  </div>
+  <div class="nav-status">online</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-sprites">
+    <span class="sprite" style="left:4%;top:12%;animation-delay:0s;animation-duration:4s">🌸</span>
+    <span class="sprite" style="left:89%;top:18%;animation-delay:1s;animation-duration:5s">⭐</span>
+    <span class="sprite" style="left:10%;top:72%;animation-delay:0.5s;animation-duration:3.5s">🌙</span>
+    <span class="sprite" style="left:83%;top:68%;animation-delay:1.5s;animation-duration:4.5s">💫</span>
+    <span class="sprite" style="left:50%;top:6%;animation-delay:0.3s;animation-duration:6s">🌷</span>
+    <span class="sprite" style="left:28%;top:82%;animation-delay:2s;animation-duration:4s">✨</span>
+    <span class="sprite" style="left:72%;top:80%;animation-delay:0.8s;animation-duration:5.5s">🎀</span>
+  </div>
+  <div class="px-window hero-win">
+    <div class="win-bar pink">
+      <div class="win-dot" style="background:var(--yellow)"></div>
+      <div class="win-dot" style="background:var(--mint)"></div>
+      <div class="win-dot" style="background:var(--pink)"></div>
+      <span class="win-title">welcome.exe — annanya's world</span>
+    </div>
+    <div class="win-inner">
+      <span class="hero-greeting">&gt; hello, world. i'm —</span>
+      <div class="hero-name">ANNANYA</div>
+      <div class="hero-tagline">AI/ML engineer · music nerd · curious human<span class="hero-cursor"></span></div>
+      <div class="hero-bio">
+        this little corner of the internet is mine.<br>
+        it holds my code, my playlists, my half-finished thoughts,<br>
+        the books that broke me open, and everything in between.
+      </div>
+      <div class="meta-row">
+        <span class="meta-chip">📍 Jersey City, NJ</span>
+        <span class="meta-chip">🎓 M.S. CS @ Stevens</span>
+        <span class="meta-chip">💼 open to work</span>
+        <span class="meta-chip">☕ coffee &gt; any other drink</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ground"></div>
+
+<!-- QUOTE -->
+<div class="quote-band reveal">
+  <div class="qb-text">Not all those who wander are lost.</div>
+  <div class="qb-author">J.R.R. Tolkien, The Fellowship of the Ring</div>
+</div>
+
+<!-- HUB -->
+<div class="hub">
+  <div class="hub-label reveal">[ choose where to go ]</div>
+  <div class="hub-grid reveal">
+
+    <a href="academics.html" class="hub-tile sky">
+      <span class="tile-emoji">🎓</span>
+      <span class="tile-name">ACADEMICS</span>
+      <span class="tile-sub">degrees &amp; experience</span>
+      <span class="tile-arrow">&gt; enter_</span>
+    </a>
+
+    <a href="projects.html" class="hub-tile">
+      <span class="tile-emoji">💾</span>
+      <span class="tile-name">PROJECTS</span>
+      <span class="tile-sub">things i've built</span>
+      <span class="tile-arrow">&gt; enter_</span>
+    </a>
+
+    <a href="skills.html" class="hub-tile lilac">
+      <span class="tile-emoji">⚙️</span>
+      <span class="tile-name">SKILLS</span>
+      <span class="tile-sub">my toolkit</span>
+      <span class="tile-arrow">&gt; enter_</span>
+    </a>
+
+    <a href="music.html" class="hub-tile mint">
+      <span class="tile-emoji">🎵</span>
+      <span class="tile-name">MUSIC</span>
+      <span class="tile-sub">what's in my ears</span>
+      <span class="tile-arrow">&gt; enter_</span>
+    </a>
+
+    <a href="blog.html" class="hub-tile yellow">
+      <span class="tile-emoji">📝</span>
+      <span class="tile-name">BLOG</span>
+      <span class="tile-sub">thoughts &amp; ideas</span>
+      <span class="tile-arrow">&gt; enter_</span>
+    </a>
+
+    <a href="shelf.html" class="hub-tile">
+      <span class="tile-emoji">📚</span>
+      <span class="tile-name">SHELF</span>
+      <span class="tile-sub">books &amp; movies</span>
+      <span class="tile-arrow">&gt; enter_</span>
+    </a>
+
+    <a href="gallery.html" class="hub-tile mint">
+      <span class="tile-emoji">📸</span>
+      <span class="tile-name">GALLERY</span>
+      <span class="tile-sub">my world in pictures</span>
+      <span class="tile-arrow">&gt; enter_</span>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">✦ annanya.world</div>
+  <div class="footer-links">
+    <a href="#">LinkedIn</a>
+    <a href="#">GitHub</a>
+    <a href="#">Email</a>
+    <a href="#">Resume</a>
+  </div>
+  <div class="footer-copy">made with ♥ &amp; a lot of pink · 2025</div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

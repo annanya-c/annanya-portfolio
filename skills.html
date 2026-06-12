@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>skills — annanya.world</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.skills-os{background:var(--bg2);border:4px solid var(--lilac2);box-shadow:5px 5px 0 var(--lilac)}
+.skills-menubar{background:var(--bg3);border-bottom:3px solid var(--lilac2);display:flex;gap:0;flex-wrap:wrap}
+.sk-tab{font-family:var(--font-silk);font-size:0.52rem;color:var(--tsoft);padding:9px 18px;cursor:pointer;border-right:2px solid var(--lilac2);letter-spacing:0.05em;transition:all 0.1s;border-bottom:3px solid transparent}
+.sk-tab.active{background:var(--bg2);color:var(--lilac);border-bottom:3px solid var(--bg2);margin-bottom:-3px}
+.sk-tab:hover:not(.active){background:rgba(200,168,245,0.1);color:var(--lilac3)}
+.skills-desktop{padding:1.5rem;display:none;flex-wrap:wrap;gap:1rem;min-height:200px}
+.skills-desktop.active{display:flex}
+.skill-icon-box{background:var(--bg3);border:3px solid var(--lilac2);padding:1.1rem 0.9rem;text-align:center;width:108px;cursor:default;transition:all 0.1s;flex-shrink:0}
+.skill-icon-box:hover{background:var(--lilac2);border-color:var(--lilac);transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--lilac)}
+.skill-icon-box:hover .sib-name{color:var(--bg)}
+.sib-icon{font-size:1.9rem;display:block;margin-bottom:6px}
+.sib-name{font-family:var(--font-silk);font-size:0.42rem;color:var(--lilac3);letter-spacing:0.04em;line-height:1.4}
+
+.breadcrumb{font-family:var(--font-silk);font-size:0.5rem;color:var(--tsoft);margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:var(--pink);text-decoration:none}
+.breadcrumb a:hover{text-decoration:underline}
+.breadcrumb span{color:var(--tdim)}
+</style>
+</head>
+<body>
+<div id="px-cursor"><div class="px-cur-inner"></div></div>
+<div id="starfield"></div>
+<div id="scanlines"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">✦ annanya.world</a>
+  <div class="nav-links">
+    <a href="academics.html">academics</a>
+    <a href="projects.html">projects</a>
+    <a href="skills.html">skills</a>
+    <a href="music.html">music</a>
+    <a href="blog.html">blog</a>
+    <a href="shelf.html">shelf</a>
+    <a href="gallery.html">gallery</a>
+  </div>
+  <div class="nav-status">online</div>
+</nav>
+
+<div class="page">
+  <div class="breadcrumb reveal">
+    <a href="index.html">home</a>
+    <span>/</span>
+    <span style="color:var(--lilac)">skills</span>
+  </div>
+
+  <div class="px-divider"></div>
+
+  <div class="sec-header reveal">
+    <span class="sec-label">[ system.exe — inventory ]</span>
+    <div class="sec-title">SKILLS</div>
+  </div>
+
+  <div class="skills-os reveal">
+    <div class="skills-menubar">
+      <div class="sk-tab active" data-tab="ai">AI / ML</div>
+      <div class="sk-tab" data-tab="eng">Engineering</div>
+      <div class="sk-tab" data-tab="full">Full Stack</div>
+      <div class="sk-tab" data-tab="soft">Soft Skills</div>
+    </div>
+
+    <div class="skills-desktop active" id="stab-ai">
+      <div class="skill-icon-box"><span class="sib-icon">🧠</span><div class="sib-name">Machine Learning</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🔮</span><div class="sib-name">Deep Learning</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">💬</span><div class="sib-name">NLP</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">👁️</span><div class="sib-name">Computer Vision</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">📊</span><div class="sib-name">Data Analysis</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🤖</span><div class="sib-name">Generative AI</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🎯</span><div class="sib-name">Model Evaluation</div></div>
+    </div>
+    <div class="skills-desktop" id="stab-eng">
+      <div class="skill-icon-box"><span class="sib-icon">🐍</span><div class="sib-name">Python</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🌶️</span><div class="sib-name">Flask</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🗄️</span><div class="sib-name">SQL Server</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">☁️</span><div class="sib-name">Azure</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🐧</span><div class="sib-name">Linux</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🔀</span><div class="sib-name">Git / CI-CD</div></div>
+    </div>
+    <div class="skills-desktop" id="stab-full">
+      <div class="skill-icon-box"><span class="sib-icon">⚡</span><div class="sib-name">Full-Stack Dev</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🔄</span><div class="sib-name">ETL Workflows</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🌐</span><div class="sib-name">HTML / CSS / JS</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">📡</span><div class="sib-name">API Design</div></div>
+    </div>
+    <div class="skills-desktop" id="stab-soft">
+      <div class="skill-icon-box"><span class="sib-icon">✍️</span><div class="sib-name">Tech Writing</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🔍</span><div class="sib-name">Research</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">💡</span><div class="sib-name">Problem Solving</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🗣️</span><div class="sib-name">Communication</div></div>
+      <div class="skill-icon-box"><span class="sib-icon">🤝</span><div class="sib-name">Mentorship</div></div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">✦ annanya.world / skills</div>
+  <div class="footer-links">
+    <a href="projects.html">← projects</a>
+    <a href="music.html">music →</a>
+  </div>
+  <div class="footer-copy">made with ♥ · 2025</div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+document.querySelectorAll('.sk-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.sk-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.skills-desktop').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('stab-'+tab.dataset.tab).classList.add('active');
+  });
+});
+</script>
+</body>
+</html>

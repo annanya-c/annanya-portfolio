@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>music — annanya.world</title>
+<link rel="stylesheet" href="shared.css"/>
+<style>
+.music-player{background:var(--bg2);border:4px solid var(--mint2);box-shadow:4px 4px 0 var(--mint);margin-bottom:2rem}
+.mp-bar{background:linear-gradient(to right,var(--bg3),var(--mint2));padding:7px 12px;border-bottom:3px solid var(--mint2);font-family:var(--font-pixel);font-size:0.42rem;color:var(--mint);display:flex;align-items:center;gap:8px}
+.mp-bar::before{content:'🎵';font-size:0.9rem}
+.mp-body{padding:1.6rem 1.8rem}
+.now-playing{font-family:var(--font-vt);font-size:1.8rem;color:var(--yellow);margin-bottom:0.25rem;transition:opacity 0.2s}
+.np-sub{font-family:var(--font-silk);font-size:0.5rem;color:var(--mint);letter-spacing:0.1em;margin-bottom:1.1rem}
+.progress-bar{height:10px;background:var(--bg3);border:2px solid var(--mint2);margin-bottom:0.9rem;position:relative;overflow:hidden;cursor:pointer}
+.progress-fill{height:100%;background:linear-gradient(to right,var(--mint2),var(--mint));width:0%;animation:songPlay 30s linear infinite}
+@keyframes songPlay{0%{width:0%}100%{width:100%}}
+.player-controls{display:flex;gap:8px;flex-wrap:wrap}
+.pc-btn{font-family:var(--font-pixel);font-size:0.48rem;background:var(--bg3);border:3px solid var(--mint2);color:var(--mint);padding:7px 13px;cursor:pointer;transition:all 0.1s}
+.pc-btn:hover{background:var(--mint2);color:var(--bg);transform:translate(-1px,-1px);box-shadow:2px 2px 0 var(--mint)}
+
+.albums-sec{margin-bottom:2rem}
+.albums-label{font-family:var(--font-pixel);font-size:0.5rem;color:var(--mint);margin-bottom:1rem}
+.albums-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem}
+.album-card{background:var(--bg3);border:3px solid var(--pink);padding:0;cursor:pointer;transition:all 0.1s;text-align:center;overflow:hidden}
+.album-card:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--pink3);border-color:var(--pink3)}
+.album-art{width:100%;aspect-ratio:1;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:3rem;border-bottom:3px solid var(--pink)}
+.album-info{padding:0.6rem 0.5rem}
+.album-title{font-family:var(--font-pixel);font-size:0.4rem;color:var(--pink);line-height:1.5;margin-bottom:2px}
+.album-artist{font-family:var(--font-vt);font-size:1rem;color:var(--tsoft)}
+
+.genres-win{background:var(--bg2);border:4px solid var(--yellow);box-shadow:4px 4px 0 var(--yellow2)}
+.genres-bar{background:linear-gradient(to right,var(--bg3),var(--yellow2));padding:7px 12px;border-bottom:3px solid var(--yellow2);font-family:var(--font-pixel);font-size:0.42rem;color:var(--yellow)}
+.genre-pills{display:flex;flex-wrap:wrap;gap:8px;padding:1.2rem 1.5rem}
+.gpill{font-family:var(--font-silk);font-size:0.48rem;padding:6px 14px;background:var(--bg3);border:2px solid var(--yellow);color:var(--yellow);cursor:default;transition:all 0.1s}
+.gpill:hover{background:var(--yellow);color:var(--bg);transform:translate(-1px,-1px);box-shadow:2px 2px 0 var(--yellow2)}
+
+.breadcrumb{font-family:var(--font-silk);font-size:0.5rem;color:var(--tsoft);margin-bottom:1.5rem;display:flex;align-items:center;gap:8px}
+.breadcrumb a{color:var(--pink);text-decoration:none}
+.breadcrumb span{color:var(--tdim)}
+</style>
+</head>
+<body>
+<div id="px-cursor"><div class="px-cur-inner"></div></div>
+<div id="starfield"></div>
+<div id="scanlines"></div>
+
+<nav>
+  <a class="nav-logo" href="index.html">✦ annanya.world</a>
+  <div class="nav-links">
+    <a href="academics.html">academics</a>
+    <a href="projects.html">projects</a>
+    <a href="skills.html">skills</a>
+    <a href="music.html">music</a>
+    <a href="blog.html">blog</a>
+    <a href="shelf.html">shelf</a>
+    <a href="gallery.html">gallery</a>
+  </div>
+  <div class="nav-status">online</div>
+</nav>
+
+<div class="page">
+  <div class="breadcrumb reveal">
+    <a href="index.html">home</a>
+    <span>/</span>
+    <span style="color:var(--mint)">music</span>
+  </div>
+
+  <div class="px-divider"></div>
+
+  <div class="sec-header reveal">
+    <span class="sec-label">[ now playing — annanya's universe ]</span>
+    <div class="sec-title">MUSIC TASTE</div>
+  </div>
+
+  <!-- PLAYER -->
+  <div class="music-player reveal">
+    <div class="mp-bar">winamp.exe — my current obsessions</div>
+    <div class="mp-body">
+      <div class="now-playing" id="npTitle">Cruel Summer — Taylor Swift</div>
+      <div class="np-sub">currently on repeat ✦</div>
+      <div class="progress-bar"><div class="progress-fill" id="pFill"></div></div>
+      <div class="player-controls">
+        <button class="pc-btn" onclick="prevTrack()">◄◄ PREV</button>
+        <button class="pc-btn" id="playBtn" onclick="togglePlay()">▌▌ PAUSE</button>
+        <button class="pc-btn" onclick="nextTrack()">NEXT ►►</button>
+        <button class="pc-btn" onclick="shuffleTrack()">↻ SHUF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ALBUMS -->
+  <div class="albums-sec reveal">
+    <div class="albums-label">albums that live in my head rent-free ✦</div>
+    <div class="albums-grid">
+      <div class="album-card">
+        <div class="album-art">🌟</div>
+        <div class="album-info">
+          <div class="album-title">Midnights</div>
+          <div class="album-artist">Taylor Swift</div>
+        </div>
+      </div>
+      <div class="album-card">
+        <div class="album-art">🌊</div>
+        <div class="album-info">
+          <div class="album-title">Norman F***ing Rockwell!</div>
+          <div class="album-artist">Lana Del Rey</div>
+        </div>
+      </div>
+      <div class="album-card">
+        <div class="album-art">🌙</div>
+        <div class="album-info">
+          <div class="album-title">Happier Than Ever</div>
+          <div class="album-artist">Billie Eilish</div>
+        </div>
+      </div>
+      <div class="album-card">
+        <div class="album-art">🌸</div>
+        <div class="album-info">
+          <div class="album-title">SOUR</div>
+          <div class="album-artist">Olivia Rodrigo</div>
+        </div>
+      </div>
+      <div class="album-card">
+        <div class="album-art">🌺</div>
+        <div class="album-info">
+          <div class="album-title">Folklore</div>
+          <div class="album-artist">Taylor Swift</div>
+        </div>
+      </div>
+      <div class="album-card" style="border-style:dashed;opacity:0.45;cursor:default">
+        <div class="album-art">+</div>
+        <div class="album-info">
+          <div class="album-title">add yours</div>
+          <div class="album-artist">your pick →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GENRES -->
+  <div class="genres-win reveal">
+    <div class="genres-bar">genres i vibe with</div>
+    <div class="genre-pills">
+      <span class="gpill">indie pop</span>
+      <span class="gpill">alt-pop</span>
+      <span class="gpill">bedroom pop</span>
+      <span class="gpill">dream pop</span>
+      <span class="gpill">sad girl autumn</span>
+      <span class="gpill">cinematic</span>
+      <span class="gpill">lo-fi</span>
+      <span class="gpill">R&amp;B</span>
+      <span class="gpill">singer-songwriter</span>
+      <span class="gpill">cottagecore folk</span>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-left">✦ annanya.world / music</div>
+  <div class="footer-links">
+    <a href="skills.html">← skills</a>
+    <a href="blog.html">blog →</a>
+  </div>
+  <div class="footer-copy">made with ♥ · 2025</div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+const tracks=['Cruel Summer — Taylor Swift','Telepatía — Kali Uchis','drivers license — Olivia Rodrigo','Video Games — Lana Del Rey','lovely — Billie Eilish','august — Taylor Swift','good 4 u — Olivia Rodrigo','Young and Beautiful — Lana Del Rey'];
+let ti=0,playing=true;
+const npEl=document.getElementById('npTitle');
+const playBtn=document.getElementById('playBtn');
+function updateTrack(){npEl.style.opacity=0;setTimeout(()=>{npEl.textContent=tracks[ti];npEl.style.opacity=1},200)}
+npEl.style.transition='opacity 0.2s';
+function nextTrack(){ti=(ti+1)%tracks.length;updateTrack()}
+function prevTrack(){ti=(ti-1+tracks.length)%tracks.length;updateTrack()}
+function shuffleTrack(){ti=Math.floor(Math.random()*tracks.length);updateTrack()}
+function togglePlay(){playing=!playing;playBtn.textContent=playing?'▌▌ PAUSE':'▶ PLAY';const pf=document.getElementById('pFill');pf.style.animationPlayState=playing?'running':'paused'}
+</script>
+</body>
+</html>
